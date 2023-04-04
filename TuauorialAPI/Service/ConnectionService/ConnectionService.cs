@@ -10,7 +10,7 @@ namespace TuauorialAPI.Service.ConnectionService
         /// <param name="builder"></param>
         public static void ConnectService(WebApplicationBuilder builder)
         {
-            builder.Services.AddTransient<ITutorialInterface, TutorialService>();
+            builder.Services.AddScoped<ITutorialInterface, TutorialService>();
         }
     }
 }

@@ -5,7 +5,7 @@ using TuauorialAPI.Service.ConnectionService;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// реализация сервисов
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 ConnectionService.ConnectService(builder);
 
 
@@ -15,23 +15,19 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-//подключение к бд
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ
 builder.Services.AddDbContext<DataContext>(op =>
 {
-    // тянем настройку подключения к бд
+    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ
     op.UseNpgsql(builder.Configuration.GetConnectionString("EmployeeAppCon"));
 });
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
-app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
